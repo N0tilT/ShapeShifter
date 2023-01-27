@@ -33,8 +33,7 @@ namespace ShapeShifter
         /// <param name="location">Позиция</param>
         protected Shape(Point location) : base(location)
         {
-            IsDragged = false;
-            IsSelected = false;
+            // PASS
         }
 
         /// <summary>
