@@ -13,17 +13,17 @@ namespace ShapeShifter
         /// <summary>
         /// Позиция (верхний левый угол исходного положения)
         /// </summary>
-        protected Point _location;
+        private Point _location;
 
         /// <summary>
         /// Размер
         /// </summary>
-        protected Size _size = Size.Empty;
+        private Size _size = Size.Empty;
 
         /// <summary>
         /// Поворот
         /// </summary>
-        protected float _angle = 0.00f;
+        private float _angle = 0.00f;
 
         /// <summary>
         /// Конструктор
@@ -144,7 +144,7 @@ namespace ShapeShifter
         /// </summary>
         /// <param name="point">Исходное положение</param>
         /// <returns>Новая точка со смещенными координатами</returns>
-        public Point RotatePoint(Point point)
+        protected Point RotatePoint(Point point)
         {
             Point center = Center;
 

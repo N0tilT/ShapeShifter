@@ -59,12 +59,12 @@ namespace ShapeShifter.View
 
                 shape.Location = new Point(location.X);
                 shape.Size = new Size(100, 300);
-                shape.Color = Color.Black;
-                shape.ColorFill = Color.Aqua;
+                shape.Color = Color.Aqua;
+                shape.ColorOutline = Color.Black;
 
                 // Вывод на холст
-                using (Pen shapePen = new Pen(shape.Color, 3))
-                using (SolidBrush shapeBr = new SolidBrush(shape.ColorFill))
+                using (Pen shapePen = new Pen(shape.ColorOutline, 3))
+                using (SolidBrush shapeBr = new SolidBrush(shape.Color))
                 {
                     e.Graphics.FillPath(shapeBr, shape.GraphicsPath);
                     e.Graphics.DrawPath(shapePen, shape.GraphicsPath);

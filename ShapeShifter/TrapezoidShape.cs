@@ -37,7 +37,7 @@ namespace ShapeShifter
                     new PointF(box.Right, box.Top + box.Height / 4),
                     new PointF(box.Right, box.Bottom - box.Height / 4),
                     new PointF(box.Left, box.Bottom),
-                    new PointF(box.Left, box.Top)
+                    new PointF(box.Left, box.Top),
                 };
 
                 return result.ToArray();

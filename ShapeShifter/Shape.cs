@@ -8,24 +8,24 @@ namespace ShapeShifter
     public abstract class Shape : Region
     {
         /// <summary>
-        /// Цвет линии
-        /// </summary>
-        protected Color _color = Color.Transparent;
-
-        /// <summary>
         /// Цвет заливки
         /// </summary>
-        protected Color _colorFill = Color.Transparent;
+        private Color _color = Color.Transparent;
+
+        /// <summary>
+        /// Цвет линии
+        /// </summary>
+        private Color _colorOutline = Color.Transparent;
 
         /// <summary>
         /// Статус выделения
         /// </summary>
-        protected bool _isSelected = false;
+        private bool _isSelected = false;
 
         /// <summary>
         /// Статус перемещения
         /// </summary>
-        protected bool _isDragged = false;
+        private bool _isDragged = false;
 
         /// <summary>
         /// Конструктор
@@ -43,7 +43,7 @@ namespace ShapeShifter
         public virtual ShapeType Type => ShapeType.None;
 
         /// <summary>
-        /// Доступ к цвету линии
+        /// Доступ к цвету заливки
         /// </summary>
         public Color Color
         {
@@ -52,12 +52,12 @@ namespace ShapeShifter
         }
 
         /// <summary>
-        /// Доступ к цвету заливки
+        /// Доступ к цвету линии
         /// </summary>
-        public Color ColorFill
+        public Color ColorOutline
         {
-            get => _colorFill;
-            set => _colorFill = value;
+            get => _colorOutline;
+            set => _colorOutline = value;
         }
 
         /// <summary>
