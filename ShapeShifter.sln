@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeShifter.View", "ShapeShifter.View\ShapeShifter.View.csproj", "{90E45D2D-7D5F-4176-B8B9-8D15FF435EFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeShifter", "ShapeShifter\ShapeShifter.csproj", "{189EC650-EEA4-453E-A118-51ACBED85090}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90E45D2D-7D5F-4176-B8B9-8D15FF435EFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E45D2D-7D5F-4176-B8B9-8D15FF435EFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E45D2D-7D5F-4176-B8B9-8D15FF435EFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E45D2D-7D5F-4176-B8B9-8D15FF435EFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{189EC650-EEA4-453E-A118-51ACBED85090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{189EC650-EEA4-453E-A118-51ACBED85090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{189EC650-EEA4-453E-A118-51ACBED85090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{189EC650-EEA4-453E-A118-51ACBED85090}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32FC45A9-31BE-42EC-98AE-F2AE6C2E05B0}
+	EndGlobalSection
+EndGlobal
