@@ -127,7 +127,7 @@ namespace ShapeShifter
             {
                 Rectangle box = new Rectangle(Location, Size);
 
-                List<PointF> result = new List<PointF>
+                PointF[] result = new PointF[]
                 {
                     new PointF(box.Left, box.Top),
                     new PointF(box.Right, box.Top),
@@ -135,7 +135,7 @@ namespace ShapeShifter
                     new PointF(box.Left, box.Bottom)
                 };
 
-                return result.ToArray();
+                return result;
             }
         }
 

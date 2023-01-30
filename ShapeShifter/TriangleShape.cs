@@ -32,14 +32,14 @@ namespace ShapeShifter
             {
                 Rectangle box = new Rectangle(Location, Size);
 
-                List<PointF> result = new List<PointF>
+                PointF[] result = new PointF[]
                 {
                     new PointF(box.Right, box.Top + box.Height / 2),
                     new PointF(box.Left, box.Bottom),
                     new PointF(box.Left, box.Top)
                 };
-
-                return result.ToArray();
+                
+                return result;
             }
         }
     }
