@@ -53,7 +53,7 @@ namespace ShapeShifter.View
             // Сглаживание
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
-            PointF location = new PointF();
+            PointF location = new PointF(50, 50);
             SizeF size = new SizeF(200, 300);
 
             for (int i = 0; i < 5; i++)
