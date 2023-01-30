@@ -81,7 +81,7 @@ namespace ShapeShifter.View
             shape.Location = location;
             shape.Size = size;
             shape.Color = RandomColor();
-            shape.ColorOutline = Color.Black;
+            shape.OutlineColor = Color.Black;
 
             return shape;
         }
@@ -93,7 +93,7 @@ namespace ShapeShifter.View
         /// <param name="shape">Фигура</param>
         private void DrawShape(Graphics graphics, Shape shape)
         {
-            using (Pen shapePen = new Pen(shape.ColorOutline, 3))
+            using (Pen shapePen = new Pen(shape.OutlineColor, shape.OutlineWidth))
             using (SolidBrush shapeBr = new SolidBrush(shape.Color))
             {
                 graphics.FillPath(shapeBr, shape.GraphicsPath);
@@ -108,7 +108,7 @@ namespace ShapeShifter.View
         /// <param name="shape">Фигура</param>
         private void DrawBoundingBox(Graphics graphics, Shape shape)
         {
-            using (Pen pen = new Pen(Color.Gray, 2))
+            using (Pen pen = new Pen(Color.Gray, Shape.DefaultOutlineWidth))
             {
                 pen.DashStyle = DashStyle.Dash;
                 

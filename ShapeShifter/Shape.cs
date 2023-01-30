@@ -8,6 +8,11 @@ namespace ShapeShifter
     public abstract class Shape : Region
     {
         /// <summary>
+        /// Толщина линии по-умолчанию
+        /// </summary>
+        public const float DefaultOutlineWidth = 3.00f;
+
+        /// <summary>
         /// Цвет заливки
         /// </summary>
         private Color _color = Color.Transparent;
@@ -15,7 +20,12 @@ namespace ShapeShifter
         /// <summary>
         /// Цвет линии
         /// </summary>
-        private Color _colorOutline = Color.Transparent;
+        private Color _outlineColor = Color.Transparent;
+
+        /// <summary>
+        /// Толщина линии
+        /// </summary>
+        private float _outlineWidth = DefaultOutlineWidth;
 
         /// <summary>
         /// Статус выделения
@@ -61,10 +71,19 @@ namespace ShapeShifter
         /// <summary>
         /// Доступ к цвету линии
         /// </summary>
-        public Color ColorOutline
+        public Color OutlineColor
         {
-            get => _colorOutline;
-            set => _colorOutline = value;
+            get => _outlineColor;
+            set => _outlineColor = value;
+        }
+
+        /// <summary>
+        /// Доступ к толщине линии
+        /// </summary>
+        public float OutlineWidth
+        {
+            get => _outlineWidth;
+            set => _outlineWidth = value;
         }
 
         /// <summary>
