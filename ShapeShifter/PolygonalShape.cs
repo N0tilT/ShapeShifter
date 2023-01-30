@@ -56,7 +56,7 @@ namespace ShapeShifter
 
                 // Определение координат центра
                 // Промежуточные значения используются при построении
-                PointF centerSide = new PointF(box.Width / 2.0f, box.Height / 2.0f);
+                PointF centerSide = new PointF(box.Width / 2, box.Height / 2);
                 PointF center = new PointF(box.Left + centerSide.X, box.Top + centerSide.Y);
 
                 double angle = 0.00;
