@@ -9,6 +9,14 @@ namespace ShapeShifter
     public class TriangleShape : Shape
     {
         /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        public TriangleShape()
+        {
+            // PASS
+        }
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>

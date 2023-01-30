@@ -14,6 +14,15 @@ namespace ShapeShifter
         private int _sideCount;
 
         /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        /// <param name="location">Позиция</param>
+        public PolygonalShape(int sideCount) : base()
+        {
+            SideCount = sideCount;
+        }
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>

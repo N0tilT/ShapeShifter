@@ -8,6 +8,14 @@ namespace ShapeShifter
     public class RectangleShape : Shape
     {
         /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        public RectangleShape()
+        {
+            // PASS
+        }
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>

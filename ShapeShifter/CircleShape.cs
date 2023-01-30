@@ -6,8 +6,16 @@ namespace ShapeShifter
     /// <summary>
     /// Круг
     /// </summary>
-    public class CircleShape : Shape
+    public class CircleShape : EllipseShape
     {
+        /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        public CircleShape()
+        {
+            // PASS
+        }
+
         /// <summary>
         /// Конструктор
         /// </summary>
@@ -16,7 +24,7 @@ namespace ShapeShifter
         {
             // PASS
         }
-
+        
         /// <summary>
         /// Тип
         /// </summary>
@@ -33,21 +41,6 @@ namespace ShapeShifter
                 value.Height = value.Width;
 
                 base.Size = value;
-            }
-        }
-
-        /// <summary>
-        /// Порядок графического построения
-        /// </summary>
-        public override GraphicsPath GraphicsPath
-        {
-            get
-            {
-                GraphicsPath path = new GraphicsPath();
-
-                path.AddEllipse(new RectangleF(Location, Size));
-
-                return path;
             }
         }
     }

@@ -9,6 +9,14 @@ namespace ShapeShifter
     public class ArrowShape : Shape
     {
         /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        public ArrowShape()
+        {
+            // PASS
+        }
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>

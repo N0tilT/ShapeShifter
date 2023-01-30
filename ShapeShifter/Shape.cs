@@ -28,6 +28,14 @@ namespace ShapeShifter
         private bool _isDragged = false;
 
         /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        public Shape()
+        {
+            // PASS
+        }
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>

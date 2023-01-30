@@ -9,6 +9,14 @@ namespace ShapeShifter
     public class EllipseShape : Shape
     {
         /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        public EllipseShape()
+        {
+            // PASS
+        }
+        
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>

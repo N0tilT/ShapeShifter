@@ -26,6 +26,14 @@ namespace ShapeShifter
         private float _angle = 0.00f;
 
         /// <summary>
+        /// Пустой конструктор
+        /// </summary>
+        protected Region()
+        {
+            Location = new Point();
+        }
+
+        /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
