@@ -26,7 +26,7 @@ namespace ShapeShifter
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
-        public PolygonalShape(Point location, int sideCount) : base(location)
+        public PolygonalShape(PointF location, int sideCount) : base(location)
         {
             SideCount = sideCount;
         }
@@ -61,7 +61,7 @@ namespace ShapeShifter
         {
             get
             {
-                Rectangle box = new Rectangle(Location, Size);
+                RectangleF box = new RectangleF(Location, Size);
 
                 // Определение координат центра
                 // Промежуточные значения используются при построении

@@ -21,12 +21,12 @@ namespace ShapeShifter.View
         /// <summary>
         /// Генератор случайных чисел
         /// </summary>
-        private static Random _random = new Random();
+        private static readonly Random _random = new Random();
 
         /// <summary>
         /// Массив всех доступных фигур
         /// </summary>
-        private Shape[] _shapes = new Shape[]
+        private readonly Shape[] _shapes = new Shape[]
         {
             new ArrowShape(),
             new CircleShape(), // TODO: Зачем круг если есть настраиваемый эллипс?
@@ -53,8 +53,8 @@ namespace ShapeShifter.View
             // Сглаживание
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
-            Point location = new Point();
-            Size size = new Size(200, 300);
+            PointF location = new PointF();
+            SizeF size = new SizeF(200, 300);
 
             for (int i = 0; i < 5; i++)
             {
@@ -74,7 +74,7 @@ namespace ShapeShifter.View
         /// <param name="location">Позиция</param>
         /// <param name="size">Размер</param>
         /// <returns>Случайная фигура</returns>
-        private Shape RandomShape(Point location, Size size)
+        private Shape RandomShape(PointF location, SizeF size)
         {
             Shape shape = _shapes[_random.Next(_shapes.Length)];
 
@@ -93,11 +93,13 @@ namespace ShapeShifter.View
         /// <param name="shape">Фигура</param>
         private void DrawShape(Graphics graphics, Shape shape)
         {
-            using (Pen shapePen = new Pen(shape.OutlineColor, shape.OutlineWidth))
-            using (SolidBrush shapeBr = new SolidBrush(shape.Color))
+            GraphicsPath path = shape.GraphicsPath;
+
+            using (Pen pen = new Pen(shape.OutlineColor, shape.OutlineWidth))
+            using (SolidBrush brush = new SolidBrush(shape.Color))
             {
-                graphics.FillPath(shapeBr, shape.GraphicsPath);
-                graphics.DrawPath(shapePen, shape.GraphicsPath);
+                graphics.FillPath(brush, path);
+                graphics.DrawPath(pen, path);
             }
         }
 
@@ -112,7 +114,7 @@ namespace ShapeShifter.View
             {
                 pen.DashStyle = DashStyle.Dash;
                 
-                graphics.DrawRectangle(pen, shape.BoundingBox);
+                graphics.DrawRectangles(pen, new RectangleF[] { shape.BoundingBox });
             }
         }
 

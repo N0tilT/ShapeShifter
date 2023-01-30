@@ -49,7 +49,7 @@ namespace ShapeShifter
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
-        protected Shape(Point location) : base(location)
+        protected Shape(PointF location) : base(location)
         {
             // PASS
         }

@@ -20,7 +20,7 @@ namespace ShapeShifter
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
-        public TrapezoidShape(Point location) : base(location)
+        public TrapezoidShape(PointF location) : base(location)
         {
             // PASS
         }
@@ -38,7 +38,7 @@ namespace ShapeShifter
         {
             get
             {
-                Rectangle box = new Rectangle(Location, Size);
+                RectangleF box = new RectangleF(Location, Size);
 
                 PointF[] result = new PointF[]
                 {

@@ -13,12 +13,12 @@ namespace ShapeShifter
         /// <summary>
         /// Позиция (верхний левый угол исходного положения)
         /// </summary>
-        private Point _location;
+        private PointF _location;
 
         /// <summary>
         /// Размер
         /// </summary>
-        private Size _size = Size.Empty;
+        private SizeF _size = SizeF.Empty;
 
         /// <summary>
         /// Поворот
@@ -30,14 +30,14 @@ namespace ShapeShifter
         /// </summary>
         protected Region()
         {
-            Location = new Point();
+            Location = new PointF();
         }
 
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
-        protected Region(Point location)
+        protected Region(PointF location)
         {
             Location = location;
         }
@@ -45,7 +45,7 @@ namespace ShapeShifter
         /// <summary>
         /// Доступ к позиции
         /// </summary>
-        public Point Location
+        public PointF Location
         {
             get => _location;
             set => _location = value;
@@ -54,7 +54,7 @@ namespace ShapeShifter
         /// <summary>
         /// Доступ к размеру
         /// </summary>
-        public virtual Size Size
+        public virtual SizeF Size
         {
             get => _size;
             set => _size = value;
@@ -72,16 +72,16 @@ namespace ShapeShifter
         /// <summary>
         /// Центр
         /// </summary>
-        public Point Center
+        public PointF Center
         {
             get
             {
-                Rectangle box = new Rectangle(Location, Size);
+                RectangleF box = new RectangleF(Location, Size);
 
-                int x = box.X + box.Width / 2;
-                int y = box.Y + box.Height / 2;
+                float x = box.X + box.Width / 2;
+                float y = box.Y + box.Height / 2;
 
-                return new Point(x, y);
+                return new PointF(x, y);
             }
         }
 
@@ -89,24 +89,24 @@ namespace ShapeShifter
         /// Представление границ с учетом поворота в виде структуры прямоугольника,
         /// параллельного осям координат (AABB)
         /// </summary>
-        public virtual Rectangle BoundingBox
+        public virtual RectangleF BoundingBox
         {
             get
             {
-                Rectangle box = new Rectangle(Location, Size);
+                RectangleF box = new RectangleF(Location, Size);
                 
-                Point topLeft     = RotatePoint(new Point(box.X, box.Y));
-                Point topRight    = RotatePoint(new Point(box.Right, box.Y));
-                Point bottomLeft  = RotatePoint(new Point(box.X, box.Bottom));
-                Point bottomRight = RotatePoint(new Point(box.Right, box.Bottom));
+                PointF topLeft     = RotatePoint(new PointF(box.X, box.Y));
+                PointF topRight    = RotatePoint(new PointF(box.Right, box.Y));
+                PointF bottomLeft  = RotatePoint(new PointF(box.X, box.Bottom));
+                PointF bottomRight = RotatePoint(new PointF(box.Right, box.Bottom));
 
                 // Определение границы
-                int Left = Math.Min(topLeft.X, Math.Min(topRight.X, Math.Min(bottomLeft.X, bottomRight.X)));
-                int Top = Math.Min(topLeft.Y, Math.Min(topRight.Y, Math.Min(bottomLeft.Y, bottomRight.Y)));
-                int Right = Math.Max(topLeft.X, Math.Max(topRight.X, Math.Max(bottomLeft.X, bottomRight.X)));
-                int Bottom = Math.Max(topLeft.Y, Math.Max(topRight.Y, Math.Max(bottomLeft.Y, bottomRight.Y)));
+                float Left = Math.Min(topLeft.X, Math.Min(topRight.X, Math.Min(bottomLeft.X, bottomRight.X)));
+                float Top = Math.Min(topLeft.Y, Math.Min(topRight.Y, Math.Min(bottomLeft.Y, bottomRight.Y)));
+                float Right = Math.Max(topLeft.X, Math.Max(topRight.X, Math.Max(bottomLeft.X, bottomRight.X)));
+                float Bottom = Math.Max(topLeft.Y, Math.Max(topRight.Y, Math.Max(bottomLeft.Y, bottomRight.Y)));
 
-                return Rectangle.FromLTRB(Left, Top, Right, Bottom);
+                return RectangleF.FromLTRB(Left, Top, Right, Bottom);
             }
         }
 
@@ -133,7 +133,7 @@ namespace ShapeShifter
         {
             get
             {
-                Rectangle box = new Rectangle(Location, Size);
+                RectangleF box = new RectangleF(Location, Size);
 
                 PointF[] result = new PointF[]
                 {
@@ -152,17 +152,17 @@ namespace ShapeShifter
         /// </summary>
         /// <param name="point">Исходное положение</param>
         /// <returns>Новая точка со смещенными координатами</returns>
-        protected Point RotatePoint(Point point)
+        protected PointF RotatePoint(PointF point)
         {
-            Point center = Center;
+            PointF center = Center;
 
-            int virtualX = point.X - center.X;
-            int virtualY = point.Y - center.Y;
+            float virtualX = point.X - center.X;
+            float virtualY = point.Y - center.Y;
 
-            int resultX = (int)(center.X + Math.Cos(Angle) * virtualX - Math.Sin(Angle) * virtualY);
-            int resultY = (int)(center.Y + Math.Sin(Angle) * virtualX + Math.Cos(Angle) * virtualY);
+            float resultX = (float)(center.X + Math.Cos(Angle) * virtualX - Math.Sin(Angle) * virtualY);
+            float resultY = (float)(center.Y + Math.Sin(Angle) * virtualX + Math.Cos(Angle) * virtualY);
 
-            return new Point(resultX, resultY);
+            return new PointF(resultX, resultY);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace ShapeShifter
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
-        public EllipseShape(Point location) : base(location)
+        public EllipseShape(PointF location) : base(location)
         {
             // PASS
         }

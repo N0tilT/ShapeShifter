@@ -20,7 +20,7 @@ namespace ShapeShifter
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
-        public CircleShape(Point location) : base(location)
+        public CircleShape(PointF location) : base(location)
         {
             // PASS
         }
@@ -33,7 +33,7 @@ namespace ShapeShifter
         /// <summary>
         /// Доступ к размеру
         /// </summary>
-        public override Size Size
+        public override SizeF Size
         {
             set
             {

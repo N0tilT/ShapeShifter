@@ -19,7 +19,7 @@ namespace ShapeShifter
         /// Конструктор
         /// </summary>
         /// <param name="location">Позиция</param>
-        public RectangleShape(Point location) : base(location)
+        public RectangleShape(PointF location) : base(location)
         {
             // PASS
         }
