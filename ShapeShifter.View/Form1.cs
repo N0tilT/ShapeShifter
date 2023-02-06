@@ -10,12 +10,18 @@ namespace ShapeShifter.View
     /// </summary>
     public partial class Form1 : Form
     {
+        bool drawable = false;
+        private Point PreviousPoint = MousePosition;
+        private bool _doMouseDraw;
+        private Shape _selectedFigure;
+
         /// <summary>
         /// Инициализация формы
         /// </summary>
         public Form1()
         {
             InitializeComponent();
+            Canvas.Image = new Bitmap(Canvas.Width, Canvas.Height);
         }
 
         /// <summary>
@@ -43,6 +49,7 @@ namespace ShapeShifter.View
             new PolygonalShape(8)
         };
 
+
         /// <summary>
         /// Перерисовка холста
         /// </summary>
@@ -50,22 +57,23 @@ namespace ShapeShifter.View
         /// <param name="e">Событие перерисовки</param>
         private void Canvas_Paint(object sender, PaintEventArgs e)
         {
+            if (!drawable) return;
+
             // Сглаживание
             e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 
             PointF location = new PointF(50, 50);
             SizeF size = new SizeF(200, 300);
 
-            for (int i = 0; i < 5; i++)
-            {
-                Shape shape = RandomShape(location, size);
+            Shape shape = _shapes[1];
+            shape.Location = location;
+            shape.Size = size;
+            shape.Color = Color.Blue;
+            shape.OutlineColor= Color.Black;
 
-                DrawShape(e.Graphics, shape);
-                DrawBoundingBox(e.Graphics, shape);
+            DrawShape(e.Graphics, shape);
+            DrawBoundingBox(e.Graphics, shape);
 
-                // Смещение для следующей фигуры
-                location.X += 250;
-            }
         }
 
         /// <summary>
@@ -125,6 +133,88 @@ namespace ShapeShifter.View
         private Color RandomColor()
         {
             return Color.FromArgb(_random.Next(256), _random.Next(256), _random.Next(256));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            PointF location = new PointF(50, 50);
+            SizeF size = new SizeF(200, 300);
+            Shape shape = RandomShape(location, size);
+
+
+            drawable = true;
+
+            Canvas.Refresh();
+        }
+
+        private void Canvas_Resize(object sender, EventArgs e)
+        {
+            Canvas.Invalidate();
+        }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            Point cursorPosition = new Point(MousePosition.X - this.Location.X - 8, MousePosition.Y - this.Location.Y - 30);
+            if (e.Button == MouseButtons.Left && _doMouseDraw)
+            {
+                Pen blackPen = new Pen(Color.Black, 1);
+                Graphics g = Graphics.FromImage(Canvas.Image);
+
+
+                g.DrawLine(blackPen, PreviousPoint, cursorPosition);
+
+
+                blackPen.Dispose();
+                g.Dispose();
+
+                Canvas.Invalidate();
+            }
+
+            PreviousPoint = cursorPosition;
+        }
+
+
+        private void toolStripMouseDraw_Click(object sender, EventArgs e)
+        {
+            _doMouseDraw = !_doMouseDraw;
+            _selectedFigure = null;
+        }
+
+        private void toolStripFigures_Click(object sender, EventArgs e)
+        {
+            _doMouseDraw = false;
+        }
+
+        private void прямоугольникToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _selectedFigure = _shapes[3];
+        }
+
+        private void Canvas_Click(object sender, EventArgs e)
+        {
+            if (_selectedFigure == null) 
+                return;
+
+            Point cursorPosition = new Point(MousePosition.X - this.Location.X - 8, MousePosition.Y - this.Location.Y - 30);
+            Graphics graphics = Graphics.FromImage(Canvas.Image);
+
+            Shape shape = _selectedFigure;
+            shape.Location = cursorPosition;
+            shape.Size = new SizeF(100,200);
+            shape.Color = Color.Blue;
+            shape.OutlineColor = Color.Black;
+            GraphicsPath path = _selectedFigure.GraphicsPath;
+
+            using (Pen pen = new Pen(_selectedFigure.OutlineColor, _selectedFigure.OutlineWidth))
+            using (SolidBrush brush = new SolidBrush(_selectedFigure.Color))
+            {
+                graphics.FillPath(brush, path);
+                graphics.DrawPath(pen, path);
+            }
+
+            graphics.Dispose();
+
+            Canvas.Invalidate();
         }
     }
 }
